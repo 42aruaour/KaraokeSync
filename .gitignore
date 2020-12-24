@@ -1,0 +1,14 @@
+__pycache__/
+.idea/
+venv/
+.venv/
+virtualenvironment/
+
+*.mp4
+*.mov
+*.mp3
+*.ogg
+*.m4v
+*.m4a
+*.wav
+*.avi
