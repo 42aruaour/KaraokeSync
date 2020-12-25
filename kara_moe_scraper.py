@@ -20,7 +20,7 @@ rate = 12000
 save_location = "./data/ass/"
 
 # ffmpeg command
-ffmpeg = "ffmpeg -i {input} -ac 1 -ab {bitrate} -ar {rate} -y {output}.mp3"
+ffmpeg = "ffmpeg -i {input} -ac 1 -ab {bitrate} -ar {rate} -y -vn {output}.mp3"
 
 
 # Open the karaoke list
