@@ -76,6 +76,10 @@ with open(save_location + "../ass.pickle", 'wb') as f:
 
 # Start processing everything
 for (mediafile, kid) in everything:
+    if os.path.exists(save_location + kid + ".mp3"):
+        # Skip if the file is already downloaded
+        i = i + 1
+        continue
     print("Downloading", i, "of", size, "...", mediafile)
     # Get metadata for lyrics
     metadata = requests.get(kara_bundle_url.format(kid=kid))
