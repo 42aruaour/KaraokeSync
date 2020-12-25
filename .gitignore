@@ -12,3 +12,5 @@ virtualenvironment/
 *.m4a
 *.wav
 *.avi
+
+*.exe
