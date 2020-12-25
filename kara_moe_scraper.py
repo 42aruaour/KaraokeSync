@@ -1,27 +1,6 @@
 import os
 import pickle
-
 import requests
-import re
-import codecs
-
-## section of code from
-# https://stackoverflow.com/questions/4020539/process-escape-sequences-in-a-string-in-python
-ESCAPE_SEQUENCE_RE = re.compile(r'''
-    ( \\U........      # 8-digit hex escapes
-    | \\u....          # 4-digit hex escapes
-    | \\x..            # 2-digit hex escapes
-    | \\[0-7]{1,3}     # Octal escapes
-    | \\N\{[^}]+\}     # Unicode characters by name
-    | \\[\\'"abfnrtv]  # Single-character escapes
-    )''', re.UNICODE | re.VERBOSE)
-
-def decode_escapes(s):
-    def decode_match(match):
-        return codecs.decode(match.group(0), 'unicode-escape')
-
-    return ESCAPE_SEQUENCE_RE.sub(decode_match, s)
-## end insert
 
 # Karaoke Mugen repository to scrape from
 kara_list_url = "https://kara.moe/api/karas/"
@@ -85,8 +64,6 @@ for (mediafile, kid) in everything:
     metadata = requests.get(kara_bundle_url.format(kid=kid))
     # Get the lyrics
     lyrics = metadata.json()['lyrics']['data']
-    # decode the lyrics
-    lyrics = decode_escapes(lyrics)
 
     # Save the lyrics to the appropriate file
     with open(save_location + kid + sub_file, 'wb') as f:
